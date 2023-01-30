@@ -38,9 +38,9 @@ jobs:
         # SharePoint destination folder
         sp_folder: Releases
         # SharePoint destination file name
-        sp_file_name: GCH-ISO
+        sp_file_name: glatt-client-hypervisor.iso
         # File to be uploaded
-        file: glatt-client*
+        file: glatt-client-hypervisor.iso
 
     #- name: Upload a Build Artifact
     #  uses: actions/upload-artifact@v3.1.1
