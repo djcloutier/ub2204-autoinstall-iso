@@ -24,24 +24,22 @@ jobs:
     - name: Build ISO
       run: make geniso
 
-    - name: SharePoint uploader
+    - name: SPO File Upload
       # You may pin to the exact commit or the version.
-      # uses: su-dont/share-point-uploader@d5219f8801329ec36b7add0d3874a9df0564c577
-      uses: su-dont/share-point-uploader@v2.1
+      # uses: justinmcla/spo-file-upload@04b1bc1aabea658c1ad949ad1362e3b7324c6ad2
+      uses: justinmcla/spo-file-upload@v1.2
       with:
-        # SharePoint URL
-        sp_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
-        # SharePoint Username
-        sp_username: ${{ secrets.USER }}
-        # SharePoint Password
-        sp_password: ${{ secrets.PASSWORD }}
-        # SharePoint destination folder
-        sp_folder: Releases
-        # SharePoint destination file name
-        sp_file_name: glatt-client-hypervisor.iso
-        # File to be uploaded
-        file: glatt-client-hypervisor.iso
-
+        # Destination SPO Site URL
+        site_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
+        # SPO account username. Must have write privileges on designated site.
+        username: ${{ secrets.USER }}
+        # SPO account password.
+        password: ${{ secrets.PASSWORD }}
+        # Relative destination path on SPO site. If path does not exist, it will be created.
+        destination_path: Releases
+        # Source file paths to be uploaded to SPO. Separate multiple files using a semicolon.
+        source_path: glatt-client-hypervisor.iso
+   
     #- name: Upload a Build Artifact
     #  uses: actions/upload-artifact@v3.1.1
     #  with:
