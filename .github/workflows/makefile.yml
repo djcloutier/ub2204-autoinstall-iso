@@ -24,28 +24,13 @@ jobs:
     - name: Build ISO
       run: make geniso
 
-    - name: SPO File Upload
-      # You may pin to the exact commit or the version.
-      # uses: justinmcla/spo-file-upload@04b1bc1aabea658c1ad949ad1362e3b7324c6ad2
-      uses: justinmcla/spo-file-upload@v1.2
+  
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
       with:
-        # Destination SPO Site URL
-        site_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
-        # SPO account username. Must have write privileges on designated site.
-        username: ${{ secrets.USER }}
-        # SPO account password.
-        password: ${{ secrets.PASSWORD }}
-        # Relative destination path on SPO site. If path does not exist, it will be created.
-        destination_path: Releases
-        # Source file paths to be uploaded to SPO. Separate multiple files using a semicolon.
-        source_path: glatt-client-hypervisor.iso
-   
-    #- name: Upload a Build Artifact
-    #  uses: actions/upload-artifact@v3.1.1
-    #  with:
-    #    # Artifact name
-    #    name: BootISO # optional, default is artifact
-    #    # A file, directory or wildcard pattern that describes what to upload
-    #    path: glatt-client*
-    #    #The desired behavior if no files are found using the provided path.
-    #    retention-days: 1
+        # Artifact name
+        name: BootISO # optional, default is artifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: glatt-client*
+        #The desired behavior if no files are found using the provided path.
+        retention-days: 1
