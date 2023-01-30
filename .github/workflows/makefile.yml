@@ -24,19 +24,23 @@ jobs:
     - name: Build ISO
       run: make geniso
 
-    - name: Publish to Sharepoint
+    - name: SharePoint uploader
       # You may pin to the exact commit or the version.
-      # uses: obrassard/action-sharepoint-publish@d49828940b1978e99da6a184d12b310119e35c17
-      uses: obrassard/action-sharepoint-publish@v1.0.2
+      # uses: su-dont/share-point-uploader@d5219f8801329ec36b7add0d3874a9df0564c577
+      uses: su-dont/share-point-uploader@v2.1
       with:
-        # The Sharepoint site url
-        site_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
-        # User name to use for authentication
-        sharepoint_user: ${{ secrets.USER }}
-        # Password to use for authentication
-        sharepoint_password: ${{ secrets.PASSWORD }}
-        # The path where to upload the archive in the library
-        library_folder: Releases
+        # SharePoint URL
+        sp_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
+        # SharePoint Username
+        sp_username: ${{ secrets.USER }}
+        # SharePoint Password
+        sp_password: ${{ secrets.PASSWORD }}
+        # SharePoint destination folder
+        sp_folder: Releases
+        # SharePoint destination file name
+        sp_file_name: GCH-ISO
+        # File to be uploaded
+        file: glatt-client*
 
     #- name: Upload a Build Artifact
     #  uses: actions/upload-artifact@v3.1.1
