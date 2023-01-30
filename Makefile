@@ -17,7 +17,7 @@ EXTRAS_SRCDIR = config/extras/
 EXTRAS_DESTDIR = iso_root/
 
 GENISO_LABEL = GCH2
-GENISO_FILENAME = glatt-client-hypervisor.iso
+GENISO_FILENAME = glatt-client-hypervisor.$(shell date +%Y%m%d.%H%M%S).iso
 GENISO_BOOTIMG = boot/grub/i386-pc/eltorito.img
 GENISO_BOOTCATALOG = /boot.catalog
 GENISO_START_SECTOR = $(shell sudo fdisk -l $(ISO_FILENAME) |grep iso2 | cut -d' ' -f2)
