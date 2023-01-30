@@ -24,12 +24,26 @@ jobs:
     - name: Build ISO
       run: make geniso
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.1
+    - name: Publish to Sharepoint
+      # You may pin to the exact commit or the version.
+      # uses: obrassard/action-sharepoint-publish@d49828940b1978e99da6a184d12b310119e35c17
+      uses: obrassard/action-sharepoint-publish@v1.0.2
       with:
-        # Artifact name
-        name: BootISO # optional, default is artifact
-        # A file, directory or wildcard pattern that describes what to upload
-        path: glatt-client*
-        #The desired behavior if no files are found using the provided path.
-        retention-days: 1
+        # The Sharepoint site url
+        site_url: https://glattgroup.sharepoint.com/sites/RA-PAD-Development
+        # User name to use for authentication
+        sharepoint_user: ${{ secrets.USER }}
+        # Password to use for authentication
+        sharepoint_password: ${{ secrets.PASSWORD }}
+        # The path where to upload the archive in the library
+        library_folder: Releases
+
+    #- name: Upload a Build Artifact
+    #  uses: actions/upload-artifact@v3.1.1
+    #  with:
+    #    # Artifact name
+    #    name: BootISO # optional, default is artifact
+    #    # A file, directory or wildcard pattern that describes what to upload
+    #    path: glatt-client*
+    #    #The desired behavior if no files are found using the provided path.
+    #    retention-days: 1
